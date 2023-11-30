@@ -37,6 +37,7 @@ final class Blocksmg
 {
     static function init()
     {
+
         add_action(
             'init', function () {
                 add_filter(
@@ -50,7 +51,12 @@ final class Blocksmg
                         return $categories;
                     }
                 );
-                register_block_type(__DIR__ . '/build/blocks/example');
+                $blocks = glob(__DIR__ . '/build/blocks/*/block.json');
+                foreach ($blocks as $block) {
+                    register_block_type($block);
+                }
+
+                // register_block_type(__DIR__ . '/build/blocks/example');
             }
         );
     }
