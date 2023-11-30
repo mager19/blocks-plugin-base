@@ -18,24 +18,42 @@
  * @link     https://twitter.com/mager19
  */
 
+namespace Blocksmg;
+
 if (! defined('ABSPATH') ) {
-    exit; // Exit if accessed directly.
+    die('Silence is golden.');
+}
+/**
+ * Constructor Class
+ *
+ * @category Blocks
+ * @package  CreateBlock
+ * @author   Mager19 <mager19@gmail.com>
+ * @license  GPL-2.0-or-later https://www.gnu.org/licenses/gpl-2.0.html
+ * @link     https://twitter.com/mager19
+ */
+
+final class Blocksmg
+{
+    static function init()
+    {
+        add_action(
+            'init', function () {
+                add_filter(
+                    'block_categories_all', function ($categories) {
+                        array_unshift(
+                            $categories, [
+                            'slug' => 'blocksmg',
+                            'title' => __('Blocksmg', 'blocksmg'),
+                            ]
+                        );
+                        return $categories;
+                    }
+                );
+                register_block_type(__DIR__ . '/build/blocks/example');
+            }
+        );
+    }
 }
 
-function create_custom_block_category($categories)
-{
-    array_unshift(
-        $categories, [
-        'slug' => 'blocksmg',
-        'title' => __('Blocksmg', 'blocksmg'),
-        ]
-    );
-    return $categories;
-}
-
-function create_block_blocksmg_block_init()
-{
-    add_filter('block_categories_all', 'create_custom_block_category');
-    register_block_type(__DIR__ . '/build/blocks/example');
-}
-add_action('init', 'create_block_blocksmg_block_init');
+Blocksmg::init();
