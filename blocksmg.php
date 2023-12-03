@@ -6,7 +6,7 @@
  * Requires PHP:      7.0
  * Version:           0.1.0
  * Author:            Mager19
- * Author URI:          https://twitter.com/mager19
+ * Author URI:        https://twitter.com/mager19
  * License:           GPL-2.0-or-later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain:       blocksmg
@@ -55,8 +55,6 @@ final class Blocksmg
                 foreach ($blocks as $block) {
                     register_block_type($block);
                 }
-
-                // register_block_type(__DIR__ . '/build/blocks/example');
             }
         );
     }
