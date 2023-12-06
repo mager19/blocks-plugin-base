@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name:       Blocksmg
+ * Plugin Name:       Base Blocksmg
  * Description:       A plugin of custom blocks by mager19.
  * Requires at least: 6.1
  * Requires PHP:      7.0
