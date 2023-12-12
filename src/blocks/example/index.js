@@ -37,5 +37,5 @@ registerBlockType(metadata.name, {
 	 * @see ./save.js
 	 */
 	save,
-	icon: <img src={icon} />,
+	icon: <img src={icon} width={24} height={24} />,
 });

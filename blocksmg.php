@@ -55,6 +55,10 @@ final class Blocksmg
                 foreach ($blocks as $block) {
                     register_block_type($block);
                 }
+
+                $asset_file = include plugin_dir_path(__FILE__) . 'build/index.asset.php';
+
+                wp_enqueue_script('index-settings', plugin_dir_url(__FILE__) . '/build/index.js', $asset_file['dependencies'], $asset_file['version'], true);
             }
         );
     }
