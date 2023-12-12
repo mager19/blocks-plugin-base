@@ -72,7 +72,7 @@ final class Blocksmg
         );
 
         //Set the branch that contains the stable release.
-        $myUpdateChecker->setBranch('master');
+        $myUpdateChecker->setBranch('releases');
 
         //Optional: If you're using a private repository, specify the access token like this:
         // $myUpdateChecker->setAuthentication('your-token-here');
