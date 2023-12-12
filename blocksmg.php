@@ -33,6 +33,9 @@ if (! defined('ABSPATH') ) {
  * @link     https://twitter.com/mager19
  */
 
+require 'plugin-update-checker/plugin-update-checker.php';
+use YahnisElsts\PluginUpdateChecker\v5\PucFactory;
+
 final class Blocksmg
 {
     static function init()
@@ -61,7 +64,24 @@ final class Blocksmg
                 wp_enqueue_script('index-settings', plugin_dir_url(__FILE__) . '/build/index.js', $asset_file['dependencies'], $asset_file['version'], true);
             }
         );
+
+        $myUpdateChecker = PucFactory::buildUpdateChecker(
+            'https://github.com/mager19/blocks-plugin-base/',
+            __FILE__,
+            'Blocksmg'
+        );
+
+        //Set the branch that contains the stable release.
+        $myUpdateChecker->setBranch('master');
+
+        //Optional: If you're using a private repository, specify the access token like this:
+        // $myUpdateChecker->setAuthentication('your-token-here');
     }
+
+
+
+
+
 }
 
 Blocksmg::init();
