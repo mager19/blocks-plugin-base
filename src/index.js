@@ -86,11 +86,24 @@ const BlockEditor = (props) => {
 }
 
 const generateClassName = (attributes) => {
-	return attributes.hasResponsiveSettings ? 'has-responsive-settings' : '';
+	let string = '';
+	if (attributes.mobilePadding) {
+		string += ` has-mobilePadding-${attributes.mobilePadding}`;
+	}
+
+	if (attributes.tabletPadding) {
+		string += ` has-tabletPadding-${attributes.tabletPadding}`;
+	}
+
+	if (attributes.desktopPadding) {
+		string += ` has-desktopPadding-${attributes.desktopPadding}`;
+	}
+
+	return string;
 }
 
 registerBlockExtension(blocks, {
-	extensionName: 'responsive-settings',
+	extensionName: 'padding-settings',
 	attributes: additionalAttributes,
 	classNameGenerator: generateClassName,
 	Edit: BlockEditor
